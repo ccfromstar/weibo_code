@@ -17,7 +17,4 @@
 
 源代码包含APP移动端，PC端和后台的文章录入3个部分
 
-下载下来之后
-1.先执行一下npm install
-2.然后将sql目录下的blog.sql导入本地mysql数据库
-3.再执行node app.js就可以在本地运行博客了
+下载下来之后先执行一下npm install，然后将sql目录下的blog.sql导入本地mysql数据库，再执行node app.js就可以在本地运行博客了
