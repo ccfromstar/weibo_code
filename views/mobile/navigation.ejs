@@ -1,0 +1,69 @@
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <h3 class="panel-title">博主简介</h3>
+   </div>
+   <div class="panel-body">
+      <img class="author" src="../images/author.jpg" />
+      <p class="text1">网名:来自星星的小C，8年Web开发管理经验，曾获IBM Lotus/Domino全国开发大赛第二名，现就职于一家创业公司</p>
+      <button type="button" class="btn btn-primary btn-xs" onclick="window.location='/mobile/about';">查看更多</button>
+   </div>
+</div>
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <h3 class="panel-title">微信公众号</h3>
+   </div>
+   <div class="panel-body">
+      <img class="author" src="../images/qrcode.png" />
+      <p class="text1">扫一扫关注微信公众号</p>
+   </div>
+</div>
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <h3 class="panel-title">技术文章</h3>
+   </div>
+   <div class="panel-body">
+      <%for(var i in p_c1){
+         /*
+         var title = p_c1[i].title;
+         var label = false;
+         label = title.length > 15?true:false;
+         title = title.length > 15?title.substring(0,15)+"...":title;
+         var _title = label?p_c1[i].title:"";
+         */
+      %>
+      <p class="p-right" title="<%=p_c1[i].title%>" onclick="window.location='/mobile/post?id=<%=p_c1[i].id%>';"><%=p_c1[i].title%></p>
+      <%}%>
+      <button type="button" class="btn btn-primary btn-xs" style="margin-top:5px" onclick="window.location='/mobile/list?c=1';">查看更多</button>
+   </div>
+</div>
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <h3 class="panel-title">个人日记</h3>
+   </div>
+   <div class="panel-body">
+      <%for(var i in p_c2){%>
+      <p class="p-right" title="<%=p_c2[i].title%>" onclick="window.location='/mobile/post?id=<%=p_c2[i].id%>';"><%=p_c2[i].title%></p>
+      <%}%>
+      <button type="button" class="btn btn-primary btn-xs" style="margin-top:5px" onclick="window.location='/mobile/list?c=2';">查看更多</button>
+   </div>
+</div>
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <h3 class="panel-title">在线资源</h3>
+   </div>
+   <div class="panel-body">
+      <%for(var i in p_c3){%>
+      <p class="p-right" title="<%=p_c3[i].title%>" onclick="window.location='/mobile/post?id=<%=p_c3[i].id%>';"><%=p_c3[i].title%></p>
+      <%}%>
+      <button type="button" class="btn btn-primary btn-xs" style="margin-top:5px" onclick="window.location='/mobile/list?c=3';">查看更多</button>
+   </div>
+</div>
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <h3 class="panel-title">友情链接</h3>
+   </div>
+   <div class="panel-body">
+      <img class="img-link-right" src="../images/logo2.png" onclick="window.open('http://wap.huiyoulun.com/')" title="荟邮轮"></img>
+      <img class="img-link-right" src="../images/logo6.png" onclick="window.open('http://www.4000191177.com/weixin/booking')" title="外卖侠"></img>
+   </div>
+</div>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="refresh" content="2;URL=<%=page%>" />
+		<title>陈叔叔博客-最前沿的技术博客</title>
+		<style>
+			.parent {
+				display: inline-block;
+				height: 100%;
+				width: 100%;
+				text-align: center;
+				vertical-align: middle;
+				font-size: 0;
+				margin-top: 60%;
+				/*需要将父容器的字号设置为0，不然当要垂直居中的区块中内容过段换行时就会影响居中的效果*/
+			}
+			
+			.parent:before {
+				content: '';
+				display: inline-block;
+				height: 100%;
+				vertical-align: middle;
+			}
+			
+			.child {
+				vertical-align: middle;
+				display: inline-block;
+				max-width: 100%;
+				font-size: 1.2rem;
+			}
+			.child img{ 
+					width:40%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="parent">
+			<div class="child">
+				<img src="/images/loading.gif" alt="加载中..." />
+			</div>
+		</div>
+	</body>
+
+</html>

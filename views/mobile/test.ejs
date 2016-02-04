@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<style>
+		ul {
+			list-style:outside none none;
+			padding:0px;
+			margin: 0px;
+			position: fixed;
+			right:5px;
+		}
+		body{
+			height: 100%;
+		}
+		html{
+			height:100%;
+		}
+		a{
+			text-decoration: none;
+			color:#000;
+			font-weight: bold;
+			width: 20px;
+			display: block;
+		}
+		.active{
+			background: #0000ff;
+			border-radius: 5px;
+			color:#fff;
+		}
+		li{
+			width: 20px;
+			text-align: center;
+		}
+		.header{
+			border:1px solid #ddd;
+			padding: 5px;
+			width: 90%;
+			border-bottom: none;
+		}
+		.content{
+			border:1px solid #ddd;
+			padding: 5px;
+			width: 90%;
+		}
+		  .content p{
+		  	padding-left: 10px;
+		  }
+	</style>
+	<script>
+		$(document).ready(function(){
+			var height = $(window).height();
+			var width = $(window).width();
+			alert(width + "*" + height);
+			$("li").css("height",(height)/27);
+			
+			for(var i=0;i<27;i++){
+				$("a:eq("+i+")").attr("onclick","setActive("+i+")");
+			}
+		});
+
+		/*
+		$(window).scroll(function() {
+		    currTop = $(window).scrollTop();
+		    var top = 0;
+		    for(var i=0;i<27;i++){
+				top = $("#header"+i).position().top;
+				if(top - currTop <50){
+					setLabel(i);
+				}
+			}
+		});*/
+
+		document.addEventListener("touchmove",function(e){
+			currTop = $(window).scrollTop();
+		    var top = 0;
+		    for(var i=0;i<27;i++){
+				top = $("#header"+i).position().top;
+				if(top - currTop <100){
+					setLabel(i);
+				}
+			}
+		},false);
+
+		function setLabel(j){
+			for(var i=0;i<27;i++){
+				if($("a:eq("+i+")").attr("class")== "active"){
+					$("a:eq("+i+")").removeClass("active");
+				}
+			}
+			$("a:eq("+j+")").addClass("active");
+		}
+
+		function setActive(j){
+			for(var i=0;i<27;i++){
+				if($("a:eq("+i+")").attr("class")== "active"){
+					$("a:eq("+i+")").removeClass("active");
+				}
+			}
+			$("a:eq("+j+")").addClass("active");
+			$('html,body').animate({scrollTop:$('#header'+j).offset().top}, 800);
+		}
+	</script>
+</head>
+<body>
+<%var tmp = "A;B;C;D;E;F;G;H;I;J;K;L;M;N;O;P;Q;R;S;T;U;V;W;X;Y;Z;#".split(";");%>
+	<ul>
+		<li><a class="active" href="#A">A</a></li>
+		<li><a href="#B">B</a></li>
+		<li><a href="#C">C</a></li>
+		<li><a href="#D">D</a></li>
+		<li><a href="#E">E</a></li>
+		<li><a href="#F">F</a></li>
+		<li><a href="#G">G</a></li>
+		<li><a href="#H">H</a></li>
+		<li><a href="#I">I</a></li>
+		<li><a href="#J">J</a></li>
+		<li><a href="#K">K</a></li>
+		<li><a href="#L">L</a></li>
+		<li><a href="#M">M</a></li>
+		<li><a href="#N">N</a></li>
+		<li><a href="#O">O</a></li>
+		<li><a href="#P">P</a></li>
+		<li><a href="#Q">Q</a></li>
+		<li><a href="#R">R</a></li>
+		<li><a href="#S">S</a></li>
+		<li><a href="#T">T</a></li>
+		<li><a href="#U">U</a></li>
+		<li><a href="#V">V</a></li>
+		<li><a href="#W">W</a></li>
+		<li><a href="#X">X</a></li>
+		<li><a href="#Y">Y</a></li>
+		<li><a href="#Z">Z</a></li>
+		<li><a href="##">#</a></li>
+	</ul>
+	<%for(var i=0;i<27;i++){%>
+		<div class="header" id="header<%=i%>" ><%=tmp[i]%></div>
+		<div class="content">
+			<p>汽车品牌1</p>
+			<p>汽车品牌2</p>
+			<p>汽车品牌3</p>
+			<p>汽车品牌4</p>
+		</div>
+	<%}%>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>陈叔叔博客-最前沿的技术博客</title>
+
+    <meta charset="UTF-8">
+    <meta name="title" content="陈叔叔博客_陈叔叔_博客">
+    <meta name="keywords" content="陈叔叔博客,陈叔叔,博客,外卖侠,邮轮时代,nodejs,技术文章,个人日记,在线资源,网赚,HTML5,CSS3,jQuery,AmazeUI,Lotus,Domino">
+  	<meta name="description" content="随着HTML5+CSS3技术的日渐成熟，前端开发工程师成为了现在最热门的职业,在这个全民创业的时代里，缺少的不是好的想法，而是执行力,程序开发一定要走心，这样开发出来的东西才是有灵魂的，没有十年以上的项目经验，不能说自己精通这门技术，最多也就是熟练">
+		
+
+    <link rel="stylesheet" href="/stylesheets/basic.css">
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/basic.js"></script>
+    <script type="text/javascript" src="/javascripts/Kindeditor/kindeditor-min.js"></script>
+    <script type="text/javascript" src="/javascripts/Kindeditor/lang/zh_CN.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.qrcode.min.js"></script>
+
+    <link href="/lightbox2-master/dist/css/lightbox.css" rel="stylesheet">
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?c37219a9b5543ece75ab9afd2ecf98b2";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+    var _width = $(window).width();
+    var url = window.location.href;
+    if(_width < 1264){
+        var tmp = url.split("http://blog.youlunshidai.com/");
+        var nurl = tmp[0]+"/loading?page=app/"+tmp[1];
+        window.location = nurl;
+    }
+</script>
+  </head>
+
+  <body>
+    <% include header %>
+    <%- body %>
+    <!-- JavaScript 放置在文档最后面可以使页面加载速度更快 -->
+    
+    <!-- 可选: 合并了 Bootstrap JavaScript 插件 -->
+    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/lightbox2-master/dist/js/lightbox-plus-jquery.min.js"></script>
+    <% include footer %>
+  </body>
+</html>

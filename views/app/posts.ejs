@@ -1,0 +1,18 @@
+<div class="am-g am-g-fixed blog-g-fixed">
+  <div class="am-u-md-12">
+    <article class="blog-main">
+      <h3 class="am-article-title blog-title">
+        	【<%=posts[0].name%>】<%=posts[0].title%>
+      </h3>
+      <h4 class="am-article-meta blog-meta">by <a href="">陈叔叔</a> posted on <%=posts[0].created_at%></h4>
+      <div class="am-g">
+        <div class="am-u-sm-12">
+          <%-posts[0].post%>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+<script>
+	$(".btn_return").show();
+</script>

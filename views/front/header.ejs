@@ -1,0 +1,29 @@
+<%
+var arr1 = "博客首页,技术文章,个人日记,在线资源,博主简介".split(",");
+var arr2 = "/,/list?c=1,/list?c=2,/list?c=3,/about".split(",");
+var arr3 = ",,,,".split(",");
+if(url == "/"){
+    arr3[0] = "class=active";
+}else if(url == "/about"){
+    arr3[4] = "class=active";
+}else if(url == "/list?c=3"){
+    arr3[3] = "class=active";
+}else if(url == "/list?c=2"){
+    arr3[2] = "class=active";
+}else if(url == "/list?c=1"){
+    arr3[1] = "class=active";
+}
+%>
+<header id="header">
+    <div class="center">
+        <h1 class="logo" onclick="window.open('login');">陈叔叔博客</h1>
+        <nav class="link">
+            <h2 class="none">网站导航</h2>
+            <ul>
+                <%for(var i in arr1){%>
+                    <li <%=arr3[i]%>><a href="<%=arr2[i]%>"><%=arr1[i]%></a></li>
+                <%}%>
+            </ul>
+        </nav>
+    </div>
+</header>

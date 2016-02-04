@@ -1,0 +1,60 @@
+<div class="panellayout">
+	<div class="center">
+	<div class="button-key">
+		<span>关键字</span>
+		<%for(var i in rows6){%>
+			<button type="button" class="btn btn-primary btn-xs" onclick="window.location='/list?c=<%=rows6[i].id%>';">
+				<%=rows6[i].name%>
+			</button>
+			<%}%>
+	</div>
+</div>
+  <%for(var i in posts){%>
+  <div class="panel panel-default">
+     <div class="panel-heading">
+        <h3 class="panel-title">【<%=posts[i].name%>】<%=posts[i].title%></h3>
+     </div>
+     <div class="panel-body">
+        <div class="p-post"><%-posts[i].post%></div>
+        <button type="button" class="btn btn-primary btn-xs read-btn" style="margin-top:5px" onclick="window.location='/post?id=<%=posts[i].id%>';">阅读全文</button>
+        <p class="p-data">发布时间：<%=posts[i].created_at%></p>
+     </div>
+  </div>
+  <%}%>
+  <!--分页符-->
+  <div class='div-info'>
+      当前第<%=page%>页/共<%=totalpage%>页&nbsp;<%=total%>条数据
+    </div>
+    <!--分页符-->
+    <div class='div-pager'>
+      <ul class="pagination">
+        <li <%=isFirstPage?"class=disabled":""%>><a <%=isFirstPage?"":"onclick=toPage("+(page-1)+");"%> >&laquo;</a></li>
+      <%
+        var minpage = 0;
+        var maxpage = 10;
+        if((totalpage+1)>10){
+          minpage = page - 5;
+          maxpage = page + 5;
+        }
+        if(page - 5 < 1){
+          maxpage = maxpage - page + 5;
+        }
+        if(page + 5 > (totalpage+1)){
+          minpage = minpage - (page + 5) + (totalpage +1);
+        }
+        for(var i=1;i<(totalpage+1);i++){
+          var active = "";
+          if(i==page){active = "class=active";}
+            if(i>minpage && i<maxpage){
+      %>
+        <li <%=active%>><a href="#" onclick="toPage(<%=i%>);"><%=i%></a></li>
+      <%}}%>
+        <li <%=isLastPage?"class=disabled":""%>><a <%=isLastPage?"":"onclick=toPage("+(page+1)+");"%> >&raquo;</a></li>
+      </ul>
+  </div>
+</div>
+<script>
+  function toPage(i){
+    window.location = "/list?c=<%=category%>&p="+i;
+  }
+</script>

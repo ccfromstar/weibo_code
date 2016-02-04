@@ -1,0 +1,98 @@
+<script type="text/javascript">
+    var editor;
+    KindEditor.ready(function(k){
+        editor = k.create('#post');
+    });
+
+    function setVal(str){
+      $("#state_id").val("2");
+      $("#stype").val(str);
+      html = editor.html();
+      editor.sync();
+      $("#needcode").val($(':checked[name="chkFormType"]').val());
+      document.forms[0].submit();
+    }
+
+    function publish(){
+      setVal("publish");
+    }
+
+    function save(){
+      setVal("save");
+    }
+
+    function showError(){
+      alert("请选择要上传的图片");
+    }
+
+    function setImg(name){
+      $("#imgurl").html("http://blog.youlunshidai.com/files/"+name);
+    }
+</script>
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <h3 class="panel-title">文章发布</h3>
+   </div>
+   <div class="panel-body">
+      <form method="post" action="/publishdo">
+        <table class="table table-bordered">
+                <tr>
+                    <td class="td-left">文章标题</td>
+                    <td>
+                      <input type="text" name="title" class="input-s" value = "<%=record[0]?record[0].title:''%>"></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-left">文章分类</td>
+                    <td>
+                      <select name="category_id" id="category_id" class="input-sm selectpicker">
+                            <option value="-">请选择</option>
+                              <%if(record[0]){%>
+                                <%for(var i in p_c){%>
+                                  <option <%=(record[0].category_id == p_c[i].id)?"selected":""%> value="<%=p_c[i].id%>"><%=p_c[i].name%></option>  
+                                <%}%>
+                              <%}else{%>
+                                <%for(var i in p_c){%>
+                                  <option value="<%=p_c[i].id%>"><%=p_c[i].name%></option>  
+                                <%}%>
+                              <%}%>
+                      </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-left">包含代码框</td>
+                    <td>
+                      <%if(record[0]){%>
+                        <label class="radio-inline"><input type="radio" name="chkFormType" <%=(record[0].needcode == 1)?'checked':''%> value="1">是</label>
+                        <label class="radio-inline"><input type="radio" name="chkFormType" <%=(record[0].needcode == 0)?'checked':''%> value="0">否</label>
+                      <%}else{%>
+                        <label class="radio-inline"><input type="radio" name="chkFormType" value="1">是</label>
+                        <label class="radio-inline"><input type="radio" name="chkFormType" checked value="0">否</label>
+                      <%}%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-left">文章内容</td>
+                    <td><textarea id="post" name="post" style="width:100%;height:600px"><%=record[0]?record[0].post:''%></textarea></td>
+                </tr>
+                <tr>
+                    <td>图片上传</td>
+                    <td>
+                      <iframe frameborder=0 src="upload" style="width:100%;height:50px"></iframe>
+                      <div id="imgurl"></div>
+                    </td>
+                </tr>
+        </table>
+        <input type="hidden" name="state_id" id="state_id" />
+        <input type="hidden" name="stype" id="stype" />
+        <input type="hidden" name="id" value="<%=record[0]?record[0].id:''%>" />
+        <input type="hidden" name="needcode" id="needcode">
+        <%if(record[0]){%>
+          <button type="button" class="btn btn-primary btn-xs" onclick="save()">保存</button>
+        <%}else{%>
+          <button type="button" class="btn btn-primary btn-xs" onclick="publish()">发布</button>
+        <%}%>
+        <button type="button" class="btn btn-default btn-xs" onclick="window.location='/_postlist';">关闭</button>
+      </form>
+   </div>
+</div>

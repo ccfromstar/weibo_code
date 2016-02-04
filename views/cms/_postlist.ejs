@@ -1,0 +1,63 @@
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <h3 class="panel-title">文章数据列表</h3>
+   </div>
+   <div class="panel-body">
+    <button type="button" class="btn btn-primary btn-xs" style="margin-bottom:5px" onclick="window.location='/publish';">新建</button>
+    <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>名称</th>
+        <th>发布时间</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%for(var i in posts){%>
+      <tr>
+        <td>【<%=posts[i].name%>】<%=posts[i].title%></td>
+        <td><%=posts[i].created_at%></td>
+        <td><button type="button" class="btn btn-primary btn-xs" onclick="window.location='/publish?id=<%=posts[i].id%>';">编辑</button></td>
+      </tr>
+    <%}%>
+    </tbody>
+    </table>
+  </div>
+</div>
+<!--分页符-->
+<div class='div-info'>
+    当前第<%=page%>页/共<%=totalpage%>页&nbsp;<%=total%>条数据
+  </div>
+  <!--分页符-->
+  <div class='div-pager'>
+    <ul class="pagination">
+      <li <%=isFirstPage?"class=disabled":""%>><a <%=isFirstPage?"":"onclick=toPage("+(page-1)+");"%> >&laquo;</a></li>
+    <%
+      var minpage = 0;
+      var maxpage = 10;
+      if((totalpage+1)>10){
+        minpage = page - 5;
+        maxpage = page + 5;
+      }
+      if(page - 5 < 1){
+        maxpage = maxpage - page + 5;
+      }
+      if(page + 5 > (totalpage+1)){
+        minpage = minpage - (page + 5) + (totalpage +1);
+      }
+      for(var i=1;i<(totalpage+1);i++){
+        var active = "";
+        if(i==page){active = "class=active";}
+          if(i>minpage && i<maxpage){
+    %>
+      <li <%=active%>><a href="#" onclick="toPage(<%=i%>);"><%=i%></a></li>
+    <%}}%>
+      <li <%=isLastPage?"class=disabled":""%>><a <%=isLastPage?"":"onclick=toPage("+(page+1)+");"%> >&raquo;</a></li>
+    </ul>
+</div>
+
+<script>
+  function toPage(i){
+    window.location = "/_postlist?p="+i;
+  }
+</script>

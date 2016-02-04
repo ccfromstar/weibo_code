@@ -1,0 +1,50 @@
+<!--作者简介-->
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <h3 class="panel-title">博主简介</h3>
+   </div>
+   <div class="panel-body">
+      <img class="author_right" src="../images/author.jpg" />
+      <p class="text1">网名:隔壁陈叔叔，9年Web开发管理经验，曾获IBM Lotus/Domino全国开发大赛第二名，现就职于一家创业公司</p>
+      <button type="button" class="btn btn-primary btn-xs" onclick="window.location='/about';">查看更多</button>
+   </div>
+</div>
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <h3 class="panel-title">技术文章</h3>
+   </div>
+   <div class="panel-body">
+      <%for(var i in p_c1){
+         /*
+         var title = p_c1[i].title;
+         var label = false;
+         label = title.length > 15?true:false;
+         title = title.length > 15?title.substring(0,15)+"...":title;
+         var _title = label?p_c1[i].title:"";
+         */
+      %>
+      <p class="p-right" title="<%=p_c1[i].title%>" onclick="window.location='/post?id=<%=p_c1[i].id%>';"><%=p_c1[i].title%></p>
+      <%}%>
+      <button type="button" class="btn btn-primary btn-xs" style="margin-top:5px" onclick="window.location='/list?c=1';">查看更多</button>
+   </div>
+</div>
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <h3 class="panel-title">个人日记</h3>
+   </div>
+   <div class="panel-body">
+      <%for(var i in p_c2){%>
+      <p class="p-right" title="<%=p_c2[i].title%>" onclick="window.location='/post?id=<%=p_c2[i].id%>';"><%=p_c2[i].title%></p>
+      <%}%>
+      <button type="button" class="btn btn-primary btn-xs" style="margin-top:5px" onclick="window.location='/list?c=2';">查看更多</button>
+   </div>
+</div>
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <h3 class="panel-title">宣传推广</h3>
+   </div>
+   <div class="panel-body">
+      <img class="adv_right" src="../images/320.jpg" onclick="window.open('http://www.tuniu.com/zt/yinhua320/');" />
+      <img class="adv_right" src="../images/mls.png" onclick="window.open('../files/mls.pdf');" />
+   </div>
+</div>

@@ -1,0 +1,22 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "express": "~3.4.8",
+    "ejs":"1.0.0",
+    "static-favicon": "~1.0.0",
+    "morgan": "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "body-parser": "~1.0.0",
+    "formidable": "1.0.15",
+    "express-partials":"0.3.0",
+    "connect-flash":"0.1.1",
+    "mysql": "2.3.2",
+    "nodemailer": "0.7.0",
+    "request": "2.53.0"
+  }
+}

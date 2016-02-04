@@ -1,0 +1,29 @@
+<html>
+<head>
+	<link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js"></script>
+    <script src="/javascripts/jquery.min.js"></script>
+</head>
+<body>
+<form method="post" name="form1" enctype="multipart/form-data" action="uploaddo">
+	<table>
+		<tr>
+			<td>
+				<input name="img_url" type="file" class="file" multiple="multiple">
+			</td>
+			<td><button type="button" class="btn btn-default btn-xs" onclick="_newForm()">上传图片</button></td>
+		</tr>
+	</table>
+</form>
+<h2>123</h2>
+<script>
+    function _newForm(){
+    	if(document.all.img_url.value == ""){
+    		window.parent.showError();return false;
+    	}
+    	document.form1.submit();
+    }
+</script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script> 
+</body>
+</html>

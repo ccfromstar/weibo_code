@@ -1,0 +1,25 @@
+<%for(var i in posts){%>
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <h3 class="panel-title">【<%=posts[i].name%>】<%=posts[i].title%></h3>
+   </div>
+   <div class="panel-body">
+      <div class="p-post"><%-posts[i].post%></div>
+      <button type="button" class="btn btn-primary btn-xs" style="margin-top:5px" onclick="window.location='/mobile/post?id=<%=posts[i].id%>';">阅读全文</button>
+      <p class="p-data">发布时间：<%=posts[i].created_at%></p>
+   </div>
+</div>
+<%}%>
+<!--分页符-->
+<div style='width:100%;text-align:center'>
+  <button type='button' <%=isFirstPage?"disabled":""%> <%=isFirstPage?"":"onclick=toPage("+(page-1)+");"%> class='btn btn-default btn-xs'><span class='glyphicon glyphicon-chevron-left'></span></button>
+  当前第<%=page%>页/共<%=totalpage%>页&nbsp;<%=total%>条数据
+  <button type='button' <%=isLastPage?"disabled":""%> <%=isLastPage?"":"onclick=toPage("+(page+1)+");"%> class='btn btn-default btn-xs'><span class='glyphicon glyphicon-chevron-right'></span></button>
+</div>
+<div style="height:20px"></div>
+
+<script>
+  function toPage(i){
+    window.location = "/mobile/list?c=<%=category%>&p="+i;
+  }
+</script>

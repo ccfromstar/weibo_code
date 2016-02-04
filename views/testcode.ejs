@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>代码测试</title>
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+  <script src="/javascripts/jquery.min.js"></script>
+</head>
+<body>
+<!--代码测试 BEGIN-->
+      <div class="col-sm-6">
+        <p>
+          源代码:
+          <button type="button" class="btn btn-primary btn-xs" id="run" onclick="submitTryit();" >运行代码</button>
+        </p>
+        <textarea class="code" id="sourcecode" cols="30" rows="10" placeholder="请输入代码" ></textarea>
+      </div>
+      <div class="col-sm-6">
+        <p>测试结果:</p>
+        <div id = "runresult" class="result"></div>
+      </div>
+<!--代码测试 END-->
+<script type="text/javascript">
+  function submitTryit(){
+      var code = $("#sourcecode").val();
+      $("#runresult").html(code);
+  }
+</script>
+<style type="text/css">
+.code{
+  width:100%;
+  border: 1px solid #797979; 
+  height: 600px;
+  margin-bottom:10px;
+}
+.result{
+  width:100%;
+  border: 1px solid #797979; 
+  height: 600px;
+  margin-bottom:10px;
+  overflow:auto;
+}
+.share{
+  margin-top:30px;
+}
+#run{
+  position:absolute;
+  right:20px;
+}  
+p{
+  margin-top:20px;
+}
+</style>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>  
+</body>
+</html>

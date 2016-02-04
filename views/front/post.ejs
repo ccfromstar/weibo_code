@@ -1,0 +1,79 @@
+<div class="panellayout">
+	<div class="center">
+		<div class="button-key">
+			<span>关键字</span>
+			<%for(var i in rows6){%>
+				<button type="button" class="btn btn-primary btn-xs" onclick="window.location='/list?c=<%=rows6[i].id%>';">
+					<%=rows6[i].name%>
+				</button>
+				<%}%>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">【<%=posts[0].name%>】<%=posts[0].title%></h3>
+		</div>
+		<div class="panel-body post-body">
+			<div>
+				<%-posts[0].post%>
+			</div>
+			<%if(posts[0].needcode == 1){%>
+				<button type="button" class="btn btn-primary btn-xs" onclick="window.open('/testcode');" style="margin-top:20px">尝试一下</button>
+				<%}%>
+					<div class="share">分享到:</div>
+					<div class="bdsharebuttonbox">
+						<a href="#" class="bds_sqq" data-cmd="sqq"></a>
+						<a href="#" class="bds_qzone" data-cmd="qzone"></a>
+						<a href="#" class="bds_tsina" data-cmd="tsina"></a>
+						<a href="#" class="bds_tqq" data-cmd="tqq"></a>
+						<a href="#" class="bds_renren" data-cmd="renren"></a>
+					</div>
+					<div>微信扫一扫，打开手机版:</div>
+					<div id="code"></div>
+					<p class="p-data">发布时间：
+						<%=posts[0].created_at%>
+					</p>
+					<button type="button" class="btn btn-primary btn-xs" style="margin-top:5px" onclick="history.go(-1)">返回上一页</button>
+					<button type="button" class="btn btn-primary btn-xs" style="margin-top:5px" onclick="window.location='/'">返回首页</button>
+					<!--右侧浮动关键字-->
+					<!--
+      <div class="button-key-right">
+          <%for(var i in rows6){%>
+              <button type="button" class="btn btn-primary btn-xs" onclick="window.location='/list?c=<%=rows6[i].id%>';"><%=rows6[i].name%></button>
+          <%}%>
+      </div>
+      -->
+		</div>
+	</div>
+</div>
+
+<script>
+	window._bd_share_config = {
+		"common": {
+			"bdSnsKey": {},
+			"bdText": "",
+			"bdMini": "2",
+			"bdPic": "",
+			"bdStyle": "0",
+			"bdSize": "16"
+		},
+		"share": {},
+		"image": {
+			"viewList": ["qzone", "tsina", "tqq", "renren"],
+			"viewText": "分享到：",
+			"viewSize": "16"
+		},
+		"selectShare": {
+			"bdContainerClass": null,
+			"bdSelectMiniList": ["qzone", "tsina", "tqq", "renren"]
+		}
+	};
+	with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+	$("#code").qrcode({
+		render: "table", //table方式
+		width: 150, //宽度
+		height: 150, //高度
+		text: "http://blog.youlunshidai.com/mobile/post?id=<%=posts[0].id%>" //任意内容
+	});
+	$("title").html("<%=posts[0].title%>");
+</script>

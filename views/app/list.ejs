@@ -1,0 +1,60 @@
+<!-- 文章列表 -->
+<div data-am-widget="list_news" class="am-list-news am-list-news-default">
+	<!--列表标题-->
+	<div class="am-list-news-bd">
+		<ul class="am-list">
+			<%for(var i in rows2){%>
+				<li class="am-g">
+					<a href="/app/post?id=<%=rows2[i].id%>" class="am-list-item-hd">【<%=rows2[i].name%>】<%=rows2[i].title%></a>
+					<p class="list_time">posted on：
+						<%=rows2[i].created_at%>
+					</p>
+				</li>
+				<%}%>
+		</ul>
+	</div>
+</div>
+<ul data-am-widget="pagination" class="am-pagination am-pagination-default">
+	<li <%=isFirstPage? "disabled": ""%> class="am-pagination-prev ">
+		<a <%=isFirstPage? "": "onclick=toPage("+(page-1)+ ");"%> >上一页</a>
+	</li>
+	<%
+        var minpage = 0;
+        var maxpage = 10;
+        if((totalpage+1)>10){
+          minpage = page - 5;
+          maxpage = page + 5;
+        }
+        if(page - 5 < 1){
+          maxpage = maxpage - page + 5;
+        }
+        if(page + 5 > (totalpage+1)){
+          minpage = minpage - (page + 5) + (totalpage +1);
+        }
+        for(var i=1;i<(totalpage+1);i++){
+          var active = "";
+          if(i==page){active = "class=am-active";}
+            if(i>minpage && i<maxpage){
+    %>
+        <li <%=active%>><a href="#" <%=active%> onclick="toPage(<%=i%>);"><%=i%></a></li>
+    <%}}%>
+      
+	<li <%=isLastPage? "disabled": ""%> class="am-pagination-next ">
+		<a <%=isLastPage? "": "onclick=toPage("+(page+1)+ ");"%> >下一页</a>
+	</li>
+</ul>
+<div data-am-widget="titlebar" class="am-titlebar am-titlebar-multi">
+	<h2 class="am-titlebar-title ">
+        	当前第<%=page%>页/共<%=totalpage%>页&nbsp;<%=total%>条数据
+    </h2>
+</div>
+
+<script>
+	function toPage(i) {
+		<%if(category){%>
+		window.location = "/app/list?c=<%=category%>&p=" + i;
+		<%}else{%>
+		window.location = "/app/list?p=" + i;
+		<%}%>
+	}
+</script>

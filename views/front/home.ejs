@@ -1,0 +1,172 @@
+<%var _example = ",邮轮时代,荟邮轮,荟邮云,外卖侠,上海城投,徐汇土发,龙华国际,小飞人学员管理,爱游船,瑞鹏地产".split(",");%>
+	<div id="search">
+		<!--
+    <form class="navbar-form navbar-right" role="search" method="post" action="searchdo" >
+    	<input type="text" class="search" name="key" placeholder="请输入您要搜索的关键字">
+    	<button type="submit" class="button">搜索</button>
+    </form>
+    -->
+		<div class="center">
+			<!--
+        <h1>博主网站开发案例</h1>
+        <ul class="show_ul">
+          <%for(var i=1;i<11;i++){%>
+            <li>
+              <a data-title="<%=_example[i]%>" data-lightbox="image-1" href="/images/adv<%=i%>.jpg">
+                <img class="img-thumbnail show_img" src="/images/adv<%=i%>.jpg" alt=""/>
+              </a>   
+            </li> 
+          <%}%>
+        </ul>
+        <div class="clear"></div>
+        -->
+		</div>
+	</div>
+	<div class="center">
+		<div class="button-key">
+			<span>关键字</span>
+			<%for(var i in rows6){%>
+				<button type="button" class="btn btn-primary btn-xs" onclick="window.location='/list?c=<%=rows6[i].id%>';">
+					<%=rows6[i].name%>
+				</button>
+				<%}%>
+		</div>
+	</div>
+	<div id="tour">
+		<section class="center">
+			<h2>最新更新文章</h2>
+			<p>随着HTML5+CSS3技术的日渐成熟，前端开发工程师成为了现在最热门的职业</p>
+		</section>
+		<div class="main">
+			<div class="row">
+				<div class="col-md-9" style="padding-left:5px;padding-right:5px">
+					<%for(var i in posts){%>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">【<%=posts[i].name%>】<%=posts[i].title%></h3>
+							</div>
+							<div class="panel-body">
+								<div class="p-post">
+									<%-posts[i].post%>
+								</div>
+								<button type="button" class="btn btn-primary btn-xs read-btn" onclick="window.location='/post?id=<%=posts[i].id%>';">阅读全文</button>
+								<p class="p-data">发布时间：
+									<%=posts[i].created_at%>
+								</p>
+							</div>
+						</div>
+						<%}%>
+							<!--分页符-->
+							<div class='div-info'>
+								当前第
+								<%=page%>页/共
+									<%=totalpage%>页&nbsp;
+										<%=total%>篇文章
+							</div>
+							<!--分页符-->
+							<div class='div-pager'>
+								<ul class="pagination">
+									<li <%=isFirstPage? "class=disabled": ""%>><a <%=isFirstPage? "": "onclick=toPage("+(page-1)+ ");"%> >&laquo;</a></li>
+									<%
+                var minpage = 0;
+                var maxpage = 10;
+                if((totalpage+1)>10){
+                  minpage = page - 5;
+                  maxpage = page + 5;
+                }
+                if(page - 5 < 1){
+                  maxpage = maxpage - page + 5;
+                }
+                if(page + 5 > (totalpage+1)){
+                  minpage = minpage - (page + 5) + (totalpage +1);
+                }
+                for(var i=1;i<(totalpage+1);i++){
+                  var active = "";
+                  if(i==page){active = "class=active";}
+                    if(i>minpage && i<maxpage){
+              %>
+										<li <%=active%>>
+											<a href="#" onclick="toPage(<%=i%>);">
+												<%=i%>
+											</a>
+										</li>
+										<%}}%>
+											<li <%=isLastPage? "class=disabled": ""%>><a <%=isLastPage? "": "onclick=toPage("+(page+1)+ ");"%> >&raquo;</a></li>
+								</ul>
+							</div>
+				</div>
+				<div class="col-md-3" style="padding-left:5px;padding-right:5px">
+					<%-include navigation.ejs%>
+				</div>
+			</div>
+		</div>
+
+		<div class="resource">
+			<section class="center">
+				<h2>在线资源</h2>
+				<p>在线视频教程和学习资源下载，帮助你更快的成长</p>
+			</section>
+			<%for(var i in p_c3){%>
+				<figure>
+					<figcaption onclick="window.location='/post?id=<%=p_c3[i].id%>';">
+						<%=p_c3[i].title%>
+					</figcaption>
+					<p class="p-resource-data">发布时间：
+						<%=p_c3[i].created_at%>
+					</p>
+				</figure>
+				<%}%>
+		</div>
+
+		<div class="project">
+			<section class="center">
+				<h2>项目展示</h2>
+				<p>这些是博主07年至今所有负责开发的项目,有domino,asp,jsp,nodejs等</p>
+			</section>
+			<div class="div-product">
+				<ul class="show_ul">
+					<%for(var i=1;i<11;i++){%>
+						<li>
+							<a data-title="<%=_example[i]%>" data-lightbox="image-1" href="/images/adv<%=i%>.jpg">
+                <img class="img-thumbnail show_img" src="/images/adv<%=i%>.jpg" alt=""/>
+              </a>
+						</li>
+						<%}%>
+				</ul>
+				<div class="clear"></div>
+				<!--
+				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+					<ol class="carousel-indicators">
+						<%for(var i=0;i<10;i++){%>
+							<%if(i == 0){%>
+								<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+								<%}else{%>
+									<li data-target="#myCarousel" data-slide-to="<%=i%>"></li>
+									<%}%>
+										<%}%>
+					</ol>
+
+					<div class="carousel-inner">
+						<%for(var i=1;i<11;i++){%>
+							<%if(i == 1){%>
+								<div id="plane<%=i%>" class="item active">
+									<%}else{%>
+										<div id="plane<%=i%>" class="item">
+											<%}%>
+												<img src="/images/adv<%=i%>.jpg" alt="" />
+										</div>
+										<%}%>
+								</div>
+
+								<a class="left carousel-control" href="#myCarousel" data-slide="prev"><img class="arrow" src="/images/arrow-left.gif" /></a>
+								<a class="right carousel-control" href="#myCarousel" data-slide="next"><img class="arrow" src="/images/arrow-right.gif" /></a>
+					</div>
+				</div>
+				-->
+			</div>
+		</div>
+		<script>
+			function toPage(i) {
+				window.location = "/?p=" + i;
+			}
+		</script>
