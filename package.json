@@ -17,6 +17,7 @@
     "connect-flash":"0.1.1",
     "mysql": "2.3.2",
     "nodemailer": "0.7.0",
-    "request": "2.53.0"
+    "request": "2.53.0",
+    "wechat":"*"
   }
 }
